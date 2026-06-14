@@ -1,0 +1,136 @@
+{
+  "Navbar": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "product": "Produk",
+    "contact": "Hubungi Kami"
+  },
+
+  
+  "Product": {
+    "title": "Katalog Produk Material",
+    "subtitle": "Batu Kapur Bali Premium dan Batu Alam Pilihan untuk Arsitektur Modern.",
+    "category": "Kategori",
+    "all": "Semua Produk",
+    "empty": "Belum ada produk di kategori ini.",
+    "cta": "Hubungi Untuk Penawaran"
+  },
+
+  "ProductModal": {
+    "orderNow": "Pesan Sekarang",
+    "waTemplate": "Halo Bali Limestone, saya tertarik dengan produk material berikut:\n\nNama Produk: {productName}\n\nMohon informasi mengenai harga dan ketersediaan material ini. Terima kasih!"
+  },
+
+  "Hero": {
+  "title": "Supplier Material Konstruksi & Alat Berat Terpercaya di Bali",
+  "subtitle": "Bali Limestone adalah supplier terpercaya batu limestone, tanah urug, batu pondasi, dan pasir di Bali. Kami juga menyediakan sewa alat berat dan dump truck siap kirim untuk proyek konstruksi skala menengah hingga besar.",
+  "cta": "Hubungi Kami Sekarang"
+},
+
+"About": {
+  "title": "Tentang Kami",
+  "description": "Bali Limestone adalah supplier material konstruksi terpercaya yang berbasis di Bali, Indonesia. Dengan pengalaman lebih dari 10 tahun, kami telah berhasil menyelesaikan lebih dari 1.000 proyek — mulai dari hunian pribadi hingga pengembangan komersial berskala besar di seluruh Bali. Kami menyediakan batu limestone, tanah urug, batu pondasi, pasir, dan layanan sewa alat berat untuk semua skala proyek.",
+  "stat1Value": "1.000+",
+  "stat1Label": "Proyek Selesai",
+  "stat2Value": "90%",
+  "stat2Label": "Kepuasan Klien",
+  "stat3Value": "10+",
+  "stat3Label": "Tahun Pengalaman"
+},
+
+  "Services": {
+      "sectionTitle": "Layanan Kami",
+      "sectionSubtitle": "Mulai dari persiapan lahan, galian, pembersihan, bongkar bangunan, supply material, hingga sewa alat berat — Bali Limestone adalah mitra konstruksi lengkap Anda di seluruh Bali.",
+      "learnMore": "Selengkapnya",
+      "items": {
+        "land-cut-fill": {
+          "name": "Land Cut & Fill",
+          "description": "Layanan pemerataan lahan profesional menggunakan excavator dan bulldozer. Cocok untuk pondasi villa, perumahan, dan proyek komersial di seluruh Bali."
+        },
+        "basement-excavation": {
+          "name": "Galian Basement",
+          "description": "Galian dalam untuk basement, parkir bawah tanah, dan pondasi besar. Operator kami memastikan presisi, keamanan, dan efisiensi di setiap proyek."
+        },
+        "land-clearing": {
+          "name": "Land Clearing",
+          "description": "Pembersihan lahan lengkap — menebang pohon, semak, dan material organik untuk mempersiapkan lokasi konstruksi secara cepat dan efisien."
+        },
+        "building-demolition": {
+          "name": "Bongkar Bangunan",
+          "description": "Pembongkaran bangunan lama yang aman dan terkontrol. Kami menangani pengangkutan puing dan pembersihan lokasi siap untuk proyek berikutnya."
+        }
+      }
+    },
+
+
+    "ServicesPage": {
+        "back": "Kembali",
+        "viewDetails": "Lihat Selengkapnya"
+      },
+
+
+     "review": {
+          "title": "Ulasan Pelanggan",
+          "description": "Apa kata pelanggan kami tentang produk dan layanan kami."
+        },
+
+
+      "location": {
+            "title": "Temukan Kami",
+            "button": "Buka di Google Maps"
+          },
+
+           "footer": {
+          "explore": "Jelajahi",
+          "home": "Beranda",
+          "about": "Tentang Kami",
+          "services": "Layanan",
+          "products": "Produk",
+          "contact": "Kontak"
+        },
+
+
+        "about": {
+          "title": "Tentang Kami",
+          "description": "Bali Limestone adalah pemasok material konstruksi terkemuka yang berbasis di Bali, Indonesia. Dengan pengalaman lebih dari satu dekade, kami telah berhasil menyelesaikan lebih dari 1.000 proyek, mulai dari rumah tinggal hingga proyek komersial berskala besar. Kami menyediakan limestone premium, tanah urug, batu pondasi, pasir, serta layanan penyewaan alat berat yang disesuaikan dengan kebutuhan setiap skala proyek.",
+
+          "stats": {
+            "projects": "Proyek Berhasil Diselesaikan",
+            "satisfaction": "Tingkat Kepuasan Klien",
+            "experience": "Tahun Pengalaman"
+          },
+
+          "whyChoose": "Mengapa Memilih Bali Limestone?",
+
+          "cards": {
+            "quality": {
+              "title": "Material Berkualitas Premium",
+              "description": "Semua material dipilih dengan cermat dan melalui pemeriksaan kualitas untuk memenuhi standar konstruksi proyek residensial maupun komersial."
+            },
+
+            "delivery": {
+              "title": "Pengiriman Cepat & Andal",
+              "description": "Armada dump truck kami memastikan pengiriman tepat waktu ke seluruh Bali sehingga proyek Anda tetap berjalan sesuai jadwal."
+            },
+
+            "team": {
+              "title": "Tim Berpengalaman",
+              "description": "Dengan pengalaman lebih dari 10 tahun di industri konstruksi Bali, tim kami memahami kebutuhan unik setiap proyek."
+            }
+          }
+        },
+
+        "ServiceDetail": {
+  "subtitle": "Layanan konstruksi profesional oleh Bali Limestone — melayani semua skala proyek di seluruh Bali, Indonesia.",
+  "descriptionTitle": "Deskripsi Layanan",
+  "ctaBadge": "Respon Cepat",
+  "ctaTitle": "Butuh Material atau Layanan Konstruksi?",
+  "ctaSubtitle": "Tim kami siap mendukung proyek Anda — material, alat berat, & pengiriman.",
+  "ctaBtnLabel": "Chat via"
+}
+
+
+
+
+}

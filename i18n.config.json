@@ -1,0 +1,5 @@
+{
+  "locales": ["en", "id"],
+  "defaultLocale": "en",
+  "requestConfig": "./i18n/request.ts"
+}

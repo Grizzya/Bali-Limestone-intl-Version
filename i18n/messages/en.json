@@ -1,0 +1,120 @@
+{
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "product": "Product",
+    "contact": "Contact Us"
+  },
+
+
+  "Product": {
+    "title": "Material Product Catalog",
+    "subtitle": "Premium Bali Limestone and Selected Natural Stones for Modern Architecture.",
+    "category": "Category",
+    "all": "All Products",
+    "empty": "No products available in this category.",
+    "cta": "Contact For Quotation"
+  },
+
+  
+  "ProductModal": {
+    "orderNow": "Order Now",
+    "waTemplate": "Hello Bali Limestone, I am interested in the following material product:\n\nProduct Name: {productName}\n\nPlease provide information regarding the price and availability of this material. Thank you!"
+  },
+
+    "Hero": {
+      "title": "Trusted Construction Materials & Heavy Equipment Solutions in Bali",
+      "subtitle": "Bali Limestone is a leading supplier of limestone, fill soil, foundation stones, and sand. We also provide heavy equipment and dump truck rental services for medium to large-scale construction projects across Bali.",
+      "cta": "Contact Us Now"
+    },
+
+    "About": {
+      "title": "About Us",
+      "description": "Bali Limestone is a trusted construction material supplier based in Bali, Indonesia. With over 10 years of experience, we have successfully completed more than 1,000 projects — from residential homes to large commercial developments across the island. We provide premium limestone, fill soil, foundation stones, sand, and heavy equipment rental services tailored to every project scale.",
+      "stat1Value": "1,000+",
+      "stat1Label": "Successful Projects",
+      "stat2Value": "90%",
+      "stat2Label": "Client Satisfaction",
+      "stat3Value": "10+",
+      "stat3Label": "Years in Business"
+    },
+
+    "Services": {
+        "sectionTitle": "Our Services",
+        "sectionSubtitle": "From land preparation and excavation to clearing, demolition, material supply, and heavy equipment rental — Bali Limestone is your one-stop construction partner across Bali.",
+        "learnMore": "Learn More"
+
+      },
+
+      "ServicesPage": {
+        "back": "Back",
+        "viewDetails": "View Details"
+      },
+
+      
+        "review": {
+          "title": "Customer Reviews",
+          "description": "What our customers say about our products and services."
+        },
+
+        
+        "location": {
+          "title": "Find Us",
+          "button": "Open in Google Maps"
+        },
+
+        "footer": {
+          "explore": "Explore",
+          "home": "Home",
+          "about": "About",
+          "services": "Services",
+          "products": "Products",
+          "contact": "Contact"  
+          },
+
+          
+          "about": {
+            "title": "About Us",
+            "description": "Bali Limestone is a leading construction material supplier based in Bali, Indonesia. With over a decade of experience, we have successfully completed more than 1,000 projects — from residential homes to large commercial developments. We provide premium limestone, fill soil, foundation stones, sand, and heavy equipment rental services tailored to every project scale.",
+
+            "stats": {
+              "projects": "Successful Projects",
+              "satisfaction": "Client Satisfaction Rate",
+              "experience": "Years in Business"
+            },
+
+            "whyChoose": "Why Choose Bali Limestone?",
+
+            "cards": {
+              "quality": {
+                "title": "Premium Quality Materials",
+                "description": "All materials are carefully sourced and quality-checked to meet construction standards for both residential and commercial projects."
+              },
+
+              "delivery": {
+                "title": "Fast & Reliable Delivery",
+                "description": "Our fleet of dump trucks ensures timely delivery across Bali, keeping your project on schedule."
+              },
+
+              "team": {
+                "title": "Experienced Team",
+                "description": "With 10+ years in Bali's construction industry, our team understands the unique demands of every project."
+              }
+            }
+          },
+
+
+          "ServiceDetail": {
+  "subtitle": "Professional construction service by Bali Limestone — serving all project scales across Bali, Indonesia.",
+  "descriptionTitle": "Service Description",
+  "ctaBadge": "Fast Response",
+  "ctaTitle": "Need Material or Construction Service?",
+  "ctaSubtitle": "Our team is ready to support your project — material, alat berat, & delivery.",
+  "ctaBtnLabel": "Chat via"
+}
+
+
+
+
+}
