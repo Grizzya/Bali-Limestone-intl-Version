@@ -154,6 +154,25 @@ export default async function ProdukPage({
               <label className="block text-sm font-medium text-gray-700 mb-1">Description (Indonesian)</label>
               <textarea name="deskripsiId" placeholder="Detail produk dalam Bahasa Indonesia..." required className="w-full border border-gray-300 px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none h-24 resize-none" />
             </div>
+            
+            {/* 🔹 INPUT UPLOAD GAMBAR */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+              <input
+                type="file"
+                name="gambar"
+                accept="image/*"
+                className="w-full border border-gray-300 px-4 py-2.5 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:bg-blue-50 file:text-blue-700 file:text-sm"
+              />
+            </div>
+
+            {/* 🔹 TOMBOL SIMPAN */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md mt-2 text-sm"
+            >
+              Simpan Produk
+            </button>
 
             
           </form>

@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-150 text-white" aria-label="Hero">
 
       <Image
-        src="/hero.jpg"
+        src="/heros1.jpg"
         alt="Heavy equipment and limestone materials at a Bali Limestone construction site"
         fill
         className="object-cover object-center"

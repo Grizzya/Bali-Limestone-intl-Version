@@ -93,12 +93,12 @@ export default async function AboutPage({
           aria-label="Bali Limestone banner"
         >
           <Image
-            src="/Dummy.webp"
+            src="/aboutp.jpg"
             alt="Bali Limestone"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[0px_-560px]"
             quality={80}
           />
 

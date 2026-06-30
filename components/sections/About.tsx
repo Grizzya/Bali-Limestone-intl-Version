@@ -24,7 +24,7 @@ export default function About() {
       {/* Mobile */}
       <div className="relative md:hidden w-full h-[320px]">
         <img
-          src="/About.jpeg"
+          src="/drone1.jpg"
           alt="Bali Limestone construction project in Bali, Indonesia"
           className="w-full h-full object-cover"
           loading="lazy"
@@ -52,7 +52,7 @@ export default function About() {
         <div className="grid md:grid-cols-3 gap-8 md:items-stretch">
           <div className="md:col-span-2 min-w-0 relative overflow-hidden rounded-2xl">
             <img
-              src="/About.jpeg"
+              src="/drone1.jpg"
               alt="Bali Limestone team and construction equipment in Bali"
               className="w-full h-full object-cover"
               loading="lazy"

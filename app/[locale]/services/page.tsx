@@ -33,22 +33,24 @@ export async function generateMetadata({
   };
 }
 
-export default async function ServicesPage() {
-  await getLocale();
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  // 1. Ambil locale aktif langsung dari parameter rute URL
+  const { locale } = await params;
+  const isId = locale === "id";
 
+  // 2. Tarik data dari database TiDB / Prisma
   const services = await prisma.jasa.findMany({
     orderBy: {
       createdAt: "asc",
     },
   });
 
+  // 3. Petakan datanya agar pas dengan properti 'title' & 'description' yang diminta client
   const formattedServices = services.map((jasa) => ({
     id: jasa.id,
     slug: jasa.id,
-    nama: jasa.nama,
-    namaId: jasa.namaId,
-    deskripsi: jasa.deskripsi,
-    deskripsiId: jasa.deskripsiId,
+    title: isId ? (jasa.namaId || jasa.nama) : jasa.nama,
+    description: isId ? (jasa.deskripsiId || jasa.deskripsi) : jasa.deskripsi,
     gambar: jasa.gambar || "/Dummy.webp",
     mainImage: jasa.gambar || "/Dummy.webp",
   }));

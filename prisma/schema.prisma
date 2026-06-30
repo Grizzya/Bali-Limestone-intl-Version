@@ -59,9 +59,9 @@ model Artikel {
   id        String   @id @default(cuid())
   slug      String   @unique
   judul     String   // Kolom Bahasa Inggris (Default)
-  judulId   String?  // 🔹 Dibuat opsional
+  judulId   String?  // 
   konten    String   @db.Text // Kolom Bahasa Inggris (Default)
-  kontenId  String?  @db.Text // 🔹 Dibuat opsional
+  kontenId  String?  @db.Text // 
   gambar    String?  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -69,16 +69,18 @@ model Artikel {
 
 // --- TABEL JASA ---
 model Jasa {
-  id          String   @id
-  nama        String
-  namaId      String?
-  deskripsi   String   @db.Text
-  deskripsiId String?  @db.Text
-  gambar      String?
-  gambar2     String?
-  gambar3     String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              String   @id
+  nama            String
+  namaId          String?
+  deskripsi       String   @db.Text
+  deskripsiId     String?  @db.Text
+  deskripsiLengkap   String?  @db.Text
+  deskripsiLengkapId String?  @db.Text
+  gambar          String?
+  gambar2         String?
+  gambar3         String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 // --- TABEL TESTIMONI ---
@@ -86,9 +88,9 @@ model Testimoni {
   id        String   @id @default(cuid())
   nama      String   
   peran     String   // Kolom Bahasa Inggris (Default)
-  peranId   String?  // 🔹 Dibuat opsional
+  peranId   String?  // 
   pesan     String   @db.Text // Kolom Bahasa Inggris (Default)
-  pesanId   String?  @db.Text // 🔹 Dibuat opsional
+  pesanId   String?  @db.Text // 
   rating    Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = await prisma.jasa.findUnique({ where: { id: slug } });
   if (!service) return {};
   const name = locale === "id" ? (service.namaId || service.nama) : service.nama;
-  const desc = locale === "id" ? (service.deskripsiId || service.deskripsi) : service.deskripsi;
+  const desc = locale === "id" ? (service.deskripsiLengkapId || service.deskripsiLengkap) : service.deskripsiLengkap;
   return {
     title: name,
     description: `${desc?.slice(0, 155) ?? "Professional construction service by Bali Limestone in Bali, Indonesia."}`,
@@ -39,7 +39,10 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   if (!service) return notFound();
 
   const name = locale === "id" ? (service.namaId || service.nama) : service.nama;
-  const desc = locale === "id" ? (service.deskripsiId || service.deskripsi) : service.deskripsi;
+  const deskripsiLengkap = locale === "id"
+    ? (service.deskripsiLengkapId || service.deskripsiLengkap)
+    : service.deskripsiLengkap;
+
   const gallery: string[] = [];
   if (service.gambar2) gallery.push(service.gambar2);
   if (service.gambar3) gallery.push(service.gambar3);
@@ -77,7 +80,11 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             {/* Description */}
             <div className="lg:col-span-8">
               <h2 className="text-[28px] font-bold text-black mb-4">{t("descriptionTitle")}</h2>
-              <p className="text-gray-600 text-[16px] leading-relaxed mb-10 text-justify">{desc}</p>
+              {deskripsiLengkap && (
+                <div className="text-gray-600 text-[16px] leading-relaxed mb-10 whitespace-pre-line text-justify">
+                  {deskripsiLengkap}
+                </div>
+              )}
 
               {gallery.length > 0 && (
                 <div className="grid grid-cols-2 gap-4">
@@ -119,6 +126,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
                 <div className="h-px bg-black/15" />
 
+                {/* ✅ FIX: tag <a ditambahkan kembali */}
                 <a
                   href="https://wa.me/628181802020"
                   target="_blank"

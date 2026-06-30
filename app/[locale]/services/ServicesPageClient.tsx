@@ -2,19 +2,17 @@
 
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
-// 🔹 IMPORT UTAMA: Ganti "next/link" bawaan menjadi Link sakti dari i18n routing kita agar prefix /id tetap terjaga
 import { Link } from "@/i18n/routing";
-// 🔹 PERBAIKAN IMPORT: Hapus useLocale, ganti menjadi useTranslations sesuai petunjuk Screenshot 2026-06-09 214555.png
 import { useTranslations } from "next-intl";
 import Navbar from "@/components/layout/Navbar";
 
 export default function ServicesPageClient({ initialServices }: { initialServices: any[] }) {
   const [active, setActive] = useState<number | null>(null);
   
-  // 🔹 INISIALISASI TRANSLATION: Menambahkan scope kedalam berkas ServicesPage
+ 
   const t = useTranslations("ServicesPage");
 
-  // Gunakan data dari database yang dilempar dari server component
+  
   const services = initialServices;
 
   return (
