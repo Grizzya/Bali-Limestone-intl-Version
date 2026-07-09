@@ -15,7 +15,7 @@ export default function Hero() {
         className="object-cover object-center"
         priority
         sizes="100vw"
-        quality={85}
+        quality={75}
       />
 
       <div className="absolute inset-0 bg-black/40" aria-hidden="true" />

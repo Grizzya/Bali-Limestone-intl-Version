@@ -41,9 +41,9 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
         }}
       >
         {/* Banner */}
-        <section className="mt-[72px] md:mt-0 md:mx-10 md:rounded-3xl overflow-hidden relative h-48 md:h-80">
+        <section className="mt-[100px] md:mt-0 md:mx-10 md:rounded-3xl overflow-hidden relative h-58 md:h-90">
           <Image
-            src="/BANN.png"
+            src="/ZURRRRRRRR.png"
             alt="Selling"
             fill
             className="object-cover object-center"

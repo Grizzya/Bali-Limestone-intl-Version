@@ -106,7 +106,7 @@ export default async function AboutPage({
 
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4">
             <Image
-              src="/BALI LIMESTONE.png"
+              src="/LOGOS.png"
               alt="Bali Limestone Logo"
               width={400}
               height={200}

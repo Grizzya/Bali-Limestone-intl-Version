@@ -54,15 +54,18 @@ model Produk {
   updatedAt   DateTime @updatedAt
 }
 
-// --- TABEL ARTIKEL ---
 model Artikel {
-  id        String   @id @default(cuid())
-  slug      String   @unique
-  judul     String   // Kolom Bahasa Inggris (Default)
-  judulId   String?  // 
-  konten    String   @db.Text // Kolom Bahasa Inggris (Default)
-  kontenId  String?  @db.Text // 
-  gambar    String?  
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  judul            String
+  judulId          String?
+  konten           String   @db.Text
+  kontenId         String?  @db.Text
+  gambar           String?
+
+  focusKeywordEn   String?
+  focusKeywordId   String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

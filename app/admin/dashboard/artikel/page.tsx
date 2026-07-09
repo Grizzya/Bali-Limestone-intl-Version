@@ -44,6 +44,8 @@ export default async function ArtikelPageAdmin({
     const konten = formData.get('konten') as string;
     const judulId = formData.get('judulId') as string;
     const kontenId = formData.get('kontenId') as string;
+    const focusKeywordEn = (formData.get('focusKeywordEn') as string) || null;
+    const focusKeywordId = (formData.get('focusKeywordId') as string) || null;
     const file = formData.get('gambar') as File;
 
     if (!judul || !judulId || !konten || !kontenId) return;
@@ -72,7 +74,7 @@ export default async function ArtikelPageAdmin({
     }
 
     await prisma.artikel.create({
-      data: { slug, judul, judulId, konten, kontenId, gambar: imageUrl },
+      data: { slug, judul, judulId, konten, kontenId, gambar: imageUrl, focusKeywordEn, focusKeywordId },
     });
 
     await rekamAktivitas('TAMBAH_ARTIKEL', `Mempublikasikan artikel baru: "${judulId}"`);

@@ -13,16 +13,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
 
           {/* Logo */}
-          <div className="lg:col-span-4 flex justify-center lg:justify-start items-center lg:items-start overflow-hidden">
-            <img
-              src="/BALI_LIMESTONE_transparent.png"
-              alt="Bali Limestone – Construction Material Supplier in Bali"
-              className="w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] lg:w-[240px] lg:h-[240px] lg:-mt-12 object-contain object-center"
-              loading="lazy"
-              width={240}
-              height={240}
-            />
-          </div>
+         <div className="lg:col-span-4 flex justify-center lg:justify-start items-center lg:items-start overflow-hidden">
+          <img
+            src="/LOGOS.png"
+            alt="Bali Limestone – Construction Material Supplier in Bali"
+            className="object-contain object-center"
+            style={{
+              width: "240px",
+              height: "240px",
+              position: "relative",
+              left: "0px",        
+              top: "0px",
+            }}
+           
+            loading="lazy"
+            width={240}
+            height={240}
+          />
+        </div>
 
           <div className="lg:col-span-8 flex flex-col sm:flex-row justify-center lg:justify-center items-center sm:items-start gap-12 sm:gap-20 lg:gap-[150px] text-center sm:text-left">
 

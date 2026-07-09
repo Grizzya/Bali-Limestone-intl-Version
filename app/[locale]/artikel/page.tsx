@@ -64,7 +64,17 @@ export default async function ArtikelUserPage({
   const artikelTopNewsKanan = artikelSisa.filter((_, i) => i % 2 !== 0);
 
   const getJudul  = (item: typeof artikelUtama) => locale === "id" ? (item.judulId  || item.judul)  : item.judul;
-  const getKonten = (item: typeof artikelUtama) => locale === "id" ? (item.kontenId || item.konten) : item.konten;
+  const getKonten = (item: typeof artikelUtama) => {
+  const html =
+    locale === "id"
+      ? (item.kontenId || item.konten)
+      : item.konten;
+
+  return html
+    ?.replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .trim();
+};
 
   const formatTanggal = (date: Date) =>
     new Date(date).toLocaleDateString(locale === "id" ? "id-ID" : "en-US", {

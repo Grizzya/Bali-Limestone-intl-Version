@@ -5,6 +5,8 @@ import { cache } from "react"; // Menggunakan cache React untuk optimasi databas
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { prisma } from "@/lib/prisma";
+import ReactMarkdown from "react-markdown";
+
 
 export const revalidate = 0;
 
@@ -97,10 +99,11 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
 
             {/* Konten artikel */}
             <div className="lg:col-span-8">
-              <div className="text-gray-700 text-[17px] leading-loose text-justify whitespace-pre-line">
-                {kontenAktif}
-              </div>
-            </div>
+                <div
+                className="article-content text-gray-700 text-justify"
+                dangerouslySetInnerHTML={{ __html: kontenAktif ?? "" }}
+              />
+             </div>        
 
             {/* CTA sticky */}
             <div className="lg:col-span-4 self-start sticky top-28">
@@ -130,13 +133,13 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
 
                 <a href="https://wa.me/628181802020" target="_blank" rel="noopener noreferrer"
                   aria-label="Contact Bali Limestone via WhatsApp"
-                  className="bg-[#1a1a1a] hover:bg-black text-[#ffcc00] rounded-xl px-5 py-3.5 flex items-center justify-between transition-colors duration-200">
+                  className="bg-[#1a1a1a] hover:bg-black text-[#ffffff] rounded-xl px-5 py-3.5 flex items-center justify-between transition-colors duration-200">
                   <div className="flex items-center gap-3">
                     <svg viewBox="0 0 24 24" fill="#25d366" className="w-7 h-7 shrink-0" aria-hidden="true">
                       <path d={WA_PATH} />
                     </svg>
                     <div>
-                      <span className="block text-[11px] text-[#ffcc0099] leading-none mb-1">
+                      <span className="block text-[11px] text-[#ffffff] leading-none mb-1">
                         {locale === "id" ? "Hubungi via" : "Chat via"}
                       </span>
                       <span className="block text-sm font-semibold leading-none">WhatsApp</span>

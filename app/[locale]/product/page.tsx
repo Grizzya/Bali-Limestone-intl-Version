@@ -28,33 +28,31 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 // ─── MAIN PAGE COMPONENT ───
 export default async function ProductPage({ params }: { params: Promise<{ locale: string }> }) {
-  // Ambil locale aktif dari params (id / en)
   const locale = (await params).locale;
 
-  // 1. Tarik semua produk dari database beserta data relasi kategorinya
+  
   const productsFromDb = await prisma.produk.findMany({
     include: {
       kategori: true, 
     },
     orderBy: {
-      id: "desc", // Urutkan dari produk terbaru
+      id: "desc", 
     },
   });
 
-  // 2. Tarik semua kategori dari database untuk menu filter
+ 
   const categoriesFromDb = await prisma.kategori.findMany({
     orderBy: {
       nama: "asc",
     },
   });
 
-  // 3. Transformasi data produk agar strukturnya sesuai dengan yang dibutuhkan komponen temanmu (Dukungan next-intl)
+  
   const serializedProducts = productsFromDb.map((p) => {
-    // Tentukan nama dan deskripsi produk berdasarkan bahasa aktif
     const namaProduk = locale === "id" ? (p.namaId || p.nama) : p.nama;
     const deskripsiProduk = locale === "id" ? (p.deskripsiId || p.deskripsi) : p.deskripsi;
     
-    // Tentukan nama kategori relasi berdasarkan bahasa aktif
+    
     const namaKategori = p.kategori 
       ? (locale === "id" ? (p.kategori.namaId || p.kategori.nama) : p.kategori.nama)
       : locale === "id" ? "Tanpa Kategori" : "Uncategorized";
@@ -64,11 +62,11 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
       nama: namaProduk,
       deskripsi: deskripsiProduk,
       gambar: p.gambar,
-      category: namaKategori, // Memetakan relasi ke filter kategori client secara bilingual
+      category: namaKategori, 
     };
   });
 
-  // 4. Gabungkan teks label "Semua Produk" dengan daftar kategori asli dari database sesuai bahasa aktif
+  
   const labelSemuaProduk = locale === "id" ? "Semua Produk" : "All Products";
   const categories = [
     labelSemuaProduk, 

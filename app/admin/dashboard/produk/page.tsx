@@ -44,12 +44,15 @@ export default async function ProdukPage({
     const deskripsiId = formData.get('deskripsiId') as string;
     
     const kategoriId = formData.get('kategoriId') as string;
-    const file = formData.get('gambar') as File;
+   const file = formData.get('gambar') as File;
 
-    if (!nama || !namaId || !kategoriId) return;
+      if (!nama || !namaId || !kategoriId) return;
 
-    let imageUrl = null;
-    if (file && file.size > 0) {
+
+      if (file && file.size > 4 * 1024 * 1024) return;
+
+      let imageUrl = null;
+      if (file && file.size > 0) {
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
       imageUrl = await new Promise((resolve, reject) => {
@@ -90,7 +93,6 @@ export default async function ProdukPage({
     if (!id) return;
 
     try {
-      // 1. AMBIL NAMA PRODUKNYA DULU SEBELUM DIHAPUS
       const produk = await prisma.produk.findUnique({
         where: { id: id },
         select: { nama: true, namaId: true }

@@ -108,7 +108,7 @@ export default function ReviewClient({
 
 function TestimonialCard({ item }: { item: any }) {
   return (
-    <div className="w-[280px] sm:w-[320px] md:w-[400px] bg-[#fafafa] rounded-2xl p-5 md:p-8 flex flex-col justify-between shrink-0 border border-gray-100 transition-all duration-300 hover:border-gray-300">
+    <div className="w-[280px] sm:w-[320px] md:w-[400px] bg-[#fafafa] rounded-2xl p-5 md:p-8 flex flex-col justify-start shrink-0 border border-gray-100 transition-all duration-300 hover:border-gray-300">
       <div className="flex justify-between items-start mb-5 md:mb-6 gap-3">
         <div className="flex items-center gap-3 md:gap-4">
           <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-200 rounded-full border border-gray-200 shadow-sm shrink-0 flex items-center justify-center font-bold text-gray-500">
@@ -139,7 +139,7 @@ function TestimonialCard({ item }: { item: any }) {
         </div>
       </div>
 
-      <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed text-justify">
+      <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed text-justify mt-2">
         "{item.pesan}"
       </p>
     </div>
