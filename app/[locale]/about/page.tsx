@@ -65,7 +65,7 @@ export default async function AboutPage({
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="bg-yellow-400 rounded-xl p-8 text-center">
-              <p className="text-4xl font-extrabold text-black">1,000+</p>
+              <p className="text-4xl font-extrabold text-black">500+</p>
               <p className="mt-2 text-black font-medium">
                 {t("stats.projects")}
               </p>
@@ -79,7 +79,7 @@ export default async function AboutPage({
             </div>
 
             <div className="bg-yellow-400 rounded-xl p-8 text-center">
-              <p className="text-4xl font-extrabold text-black">10+</p>
+              <p className="text-4xl font-extrabold text-black">5+</p>
               <p className="mt-2 text-black font-medium">
                 {t("stats.experience")}
               </p>
