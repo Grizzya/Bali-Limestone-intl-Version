@@ -60,8 +60,8 @@ export default async function ArtikelUserPage({
 
   const artikelUtama  = semuaArtikel[0];
   const artikelSisa   = semuaArtikel.slice(1);
-  const artikelListKiri    = artikelSisa.filter((_, i) => i % 2 === 0);
-  const artikelTopNewsKanan = artikelSisa.filter((_, i) => i % 2 !== 0);
+  const artikelListKiri = artikelSisa.filter((item, i: number) => i % 2 === 0);
+  const artikelTopNewsKanan = artikelSisa.filter((item, i: number) => i % 2 !== 0);
 
   const getJudul  = (item: typeof artikelUtama) => locale === "id" ? (item.judulId  || item.judul)  : item.judul;
   const getKonten = (item: typeof artikelUtama) => {
