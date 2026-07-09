@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import type { Prisma } from "@prisma/client";
 
 export const revalidate = 0;
 
@@ -35,13 +36,35 @@ export default async function ArtikelUserPage({
   const currentPage = Number(resolvedSearchParams.page) || 1;
   const itemsPerPage = 6;
   const skip = (currentPage - 1) * itemsPerPage;
-
-  const [semuaArtikel, totalItems] = await Promise.all([
+  const [semuaArtikel, totalItems]: [
+    Prisma.ArtikelGetPayload<{
+      select: {
+        id: true;
+        slug: true;
+        judul: true;
+        judulId: true;
+        konten: true;
+        kontenId: true;
+        gambar: true;
+        createdAt: true;
+      };
+    }>[],
+    number
+  ] = await Promise.all([
     prisma.artikel.findMany({
       skip,
       take: itemsPerPage,
       orderBy: { createdAt: "desc" },
-      select: { id: true, slug: true, judul: true, judulId: true, konten: true, kontenId: true, gambar: true, createdAt: true },
+      select: {
+        id: true,
+        slug: true,
+        judul: true,
+        judulId: true,
+        konten: true,
+        kontenId: true,
+        gambar: true,
+        createdAt: true,
+      },
     }),
     prisma.artikel.count(),
   ]);
@@ -59,9 +82,10 @@ export default async function ArtikelUserPage({
   }
 
   const artikelUtama  = semuaArtikel[0];
-  const artikelSisa   = semuaArtikel.slice(1);
-  const artikelListKiri = artikelSisa.filter((item, i: number) => i % 2 === 0);
-  const artikelTopNewsKanan = artikelSisa.filter((item, i: number) => i % 2 !== 0);
+  type ArtikelItem = typeof semuaArtikel[number];
+  const artikelSisa: ArtikelItem[] = semuaArtikel.slice(1);
+  const artikelListKiri = artikelSisa.filter((_, i) => i % 2 === 0);
+  const artikelTopNewsKanan = artikelSisa.filter((_, i) => i % 2 !== 0);
 
   const getJudul  = (item: typeof artikelUtama) => locale === "id" ? (item.judulId  || item.judul)  : item.judul;
   const getKonten = (item: typeof artikelUtama) => {
