@@ -36,7 +36,13 @@ export const metadata: Metadata = {
     "batu pondasi Bali",
   ],
   metadataBase: new URL("https://balilimestone.com"),
-  alternates: { canonical: "/" },
+icons: {
+  icon: "/icon.png",
+  shortcut: "/icon.png",
+  apple: "/icon.png",
+},
+
+alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
