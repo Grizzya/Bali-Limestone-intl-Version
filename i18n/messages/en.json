@@ -112,7 +112,19 @@
   "ctaTitle": "Need Material or Construction Service?",
   "ctaSubtitle": "Our team is ready to support your project — material, alat berat, & delivery.",
   "ctaBtnLabel": "Chat via"
-}
+},
+
+
+    "ProductPage": {
+      "category": "Category",
+      "searchPlaceholder": "Search products...",
+      "noProducts": "No products found."
+    },
+
+            "HomeProduct": {
+          "title": "Our Products",
+          "viewAll": "View All"
+        }
 
 
 

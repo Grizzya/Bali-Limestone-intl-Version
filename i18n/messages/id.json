@@ -128,7 +128,18 @@
   "ctaTitle": "Butuh Material atau Layanan Konstruksi?",
   "ctaSubtitle": "Tim kami siap mendukung proyek Anda — material, alat berat, & pengiriman.",
   "ctaBtnLabel": "Chat via"
-}
+},
+
+    "ProductPage": {
+      "category": "Kategori",
+      "searchPlaceholder": "Cari produk...",
+      "noProducts": "Tidak ada produk ditemukan."
+    },
+
+    "HomeProduct": {
+      "title": "Produk Kami",
+      "viewAll": "Lihat Semua"
+    }
 
 
 

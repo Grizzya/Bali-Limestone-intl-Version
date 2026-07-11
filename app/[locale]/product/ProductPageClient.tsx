@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-
+import { useTranslations } from "next-intl";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProductCard from "@/components/layout/ProductCard";
@@ -14,6 +14,7 @@ type ProductPageClientProps = {
 };
 
 export default function ProductPageClient({ initialProducts, categories }: ProductPageClientProps) {
+  const t = useTranslations("ProductPage");
   const [activeCategory, setActiveCategory] = useState(categories[0] ?? "All Products");
   const [search, setSearch] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
@@ -66,7 +67,7 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
           <div className="relative flex-1">
             <input
               type="text"
-              placeholder="Search....."
+              placeholder={t("searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full border border-gray-200 bg-white/70 rounded-lg pl-4 pr-10 py-3 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
@@ -80,7 +81,9 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
         {/* Mobile filter dropdown */}
         {showFilter && (
           <div className="md:hidden mx-4 mt-2 rounded-2xl p-4 bg-white/80 border border-gray-200 shadow-sm">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Kategori</p>
+           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
+            {t("category")}
+            </p>
             <div className="flex flex-wrap gap-2">
               {categories.map((cat: string) => (
                 <button
@@ -104,7 +107,7 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
           <div className="relative">
             <input
               type="text"
-              placeholder="Search product..."
+              placeholder={t("searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-64 border border-gray-200 bg-white/70 rounded-lg pl-4 pr-10 py-3 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
@@ -130,7 +133,7 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
               boxShadow: "0 8px 32px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.6)",
             }}
           >
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Kategori</p>
+           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">{t("category")}</p>
             <ul className="flex flex-col gap-2">
               {categories.map((cat: string) => (
                 <li key={cat}>
@@ -163,7 +166,7 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
               </div>
             ) : (
               <div className="flex items-center justify-center h-64 text-gray-400 text-sm">
-                No products found.
+                {t("noProducts")}
               </div>
             )}
           </div>
@@ -184,7 +187,7 @@ export default function ProductPageClient({ initialProducts, categories }: Produ
             </div>
           ) : (
             <div className="flex items-center justify-center h-64 text-gray-400 text-sm">
-              No products found.
+              {t("noProducts")}
             </div>
           )}
         </section>

@@ -6,11 +6,12 @@ import Link from "next/link";
 
 import ProductCard from "@/components/layout/ProductCard";
 import ProductModal from "@/components/layout/ProductModal";
+import { useTranslations } from "next-intl";
 // import { products } from "@/src/data/products";
 
 export default function ProductSection({ products }: { products: any[] }) {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-
+  const t = useTranslations("HomeProduct");
   //  DETEKSI LAYAR 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3); 
@@ -55,7 +56,7 @@ export default function ProductSection({ products }: { products: any[] }) {
         {/*  HEADER  */}
         <div className="flex items-center justify-between mb-10">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
-            Our Products
+            {t("title")}
           </h2>
 
           {/*  NAVIGASI PANAH */}
@@ -148,7 +149,7 @@ export default function ProductSection({ products }: { products: any[] }) {
             href="/product"
             className="bg-[#ffcc00] hover:bg-yellow-500 transition px-8 py-3 rounded-xl font-medium text-black inline-block shadow-sm"
           >
-            View All
+            {t("viewAll")}
           </Link>
         </div>
 
