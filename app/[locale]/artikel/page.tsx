@@ -34,41 +34,29 @@ export default async function ArtikelUserPage({
   const resolvedSearchParams = await searchParams;
 
   const currentPage = Number(resolvedSearchParams.page) || 1;
-  const itemsPerPage = 6;
+  
+  // Mengubah jumlah item menjadi 5 agar lebih ringan dan grid halaman 1 simetris (1 hero + 4 sisa)
+  const itemsPerPage = 5;
   const skip = (currentPage - 1) * itemsPerPage;
-  const [semuaArtikel, totalItems]: [
-    Prisma.ArtikelGetPayload<{
-      select: {
-        id: true;
-        slug: true;
-        judul: true;
-        judulId: true;
-        konten: true;
-        kontenId: true;
-        gambar: true;
-        createdAt: true;
-      };
-    }>[],
-    number
-  ] = await Promise.all([
-    prisma.artikel.findMany({
-      skip,
-      take: itemsPerPage,
-      orderBy: { createdAt: "desc" },
-      select: {
-        id: true,
-        slug: true,
-        judul: true,
-        judulId: true,
-        konten: true,
-        kontenId: true,
-        gambar: true,
-        createdAt: true,
-      },
-    }),
-    prisma.artikel.count(),
-  ]);
 
+  // Mengambil data secara sekuensial untuk menghemat pool koneksi TiDB serverless
+  const semuaArtikel = await prisma.artikel.findMany({
+    skip,
+    take: itemsPerPage,
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      slug: true,
+      judul: true,
+      judulId: true,
+      konten: true,
+      kontenId: true,
+      gambar: true,
+      createdAt: true,
+    },
+  });
+
+  const totalItems = await prisma.artikel.count();
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
   if (semuaArtikel.length === 0) {
@@ -84,21 +72,19 @@ export default async function ArtikelUserPage({
   const artikelUtama  = semuaArtikel[0];
   type ArtikelItem = typeof semuaArtikel[number];
   const artikelSisa: ArtikelItem[] = semuaArtikel.slice(1);
+  
+  // Membagi 4 artikel sisa: 2 di kolom kiri, 2 di kolom kanan (Top News)
   const artikelListKiri = artikelSisa.filter((_, i) => i % 2 === 0);
   const artikelTopNewsKanan = artikelSisa.filter((_, i) => i % 2 !== 0);
 
   const getJudul  = (item: typeof artikelUtama) => locale === "id" ? (item.judulId  || item.judul)  : item.judul;
   const getKonten = (item: typeof artikelUtama) => {
-  const html =
-    locale === "id"
-      ? (item.kontenId || item.konten)
-      : item.konten;
-
-  return html
-    ?.replace(/<[^>]+>/g, "")
-    .replace(/&nbsp;/g, " ")
-    .trim();
-};
+    const html = locale === "id" ? (item.kontenId || item.konten) : item.konten;
+    return html
+      ?.replace(/<[^>]+>/g, "")
+      .replace(/&nbsp;/g, " ")
+      .trim();
+  };
 
   const formatTanggal = (date: Date) =>
     new Date(date).toLocaleDateString(locale === "id" ? "id-ID" : "en-US", {
