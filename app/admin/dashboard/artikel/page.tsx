@@ -50,13 +50,21 @@ export default async function ArtikelPageAdmin({
 
     if (!judul || !judulId || !konten || !kontenId) return;
 
-    let slug = judul
+    let baseSlug = judul
       .toLowerCase()
       .trim()
       .replace(/[^\w\s-]/g, '')
       .replace(/[\s_-]+/g, '-')
       .replace(/^-+|-+$/g, '');
-    
+
+    // Pastikan slug unik: cek apakah sudah ada, kalau ada tambahkan suffix angka
+    let slug = baseSlug;
+    let counter = 1;
+    while (await prisma.artikel.findUnique({ where: { slug } })) {
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
+
     let imageUrl = null;
     if (file && file.size > 0) {
       const arrayBuffer = await file.arrayBuffer();
@@ -73,9 +81,18 @@ export default async function ArtikelPageAdmin({
       }) as string;
     }
 
-    await prisma.artikel.create({
-      data: { slug, judul, judulId, konten, kontenId, gambar: imageUrl, focusKeywordEn, focusKeywordId },
-    });
+    try {
+      await prisma.artikel.create({
+        data: { slug, judul, judulId, konten, kontenId, gambar: imageUrl, focusKeywordEn, focusKeywordId },
+      });
+    } catch (err: any) {
+      // Kalau tetap race condition (dua request nyaris bersamaan), jangan crash
+      if (err.code === 'P2002') {
+        console.warn('Slug bentrok saat create, kemungkinan double-submit. Diabaikan.');
+        return;
+      }
+      throw err;
+    }
 
     await rekamAktivitas('TAMBAH_ARTIKEL', `Mempublikasikan artikel baru: "${judulId}"`);
     revalidatePath('/admin/dashboard/artikel');
