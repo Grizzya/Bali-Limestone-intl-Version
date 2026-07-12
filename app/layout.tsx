@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "tanah urug Bali",
     "batu pondasi Bali",
   ],
-  metadataBase: new URL("https://balilimestone.com"),
+  metadataBase: new URL("https://balilimestone.id"),
 icons: {
   icon: "/icon.png",
   shortcut: "/icon.png",
@@ -46,7 +46,7 @@ alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://balilimestone.com",
+    url: "https://balilimestone.id",
     siteName: "Bali Limestone",
     title: "Bali Limestone – Premium Limestone Supplier & Heavy Equipment in Bali",
     description:
