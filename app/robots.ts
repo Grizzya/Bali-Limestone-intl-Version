@@ -5,6 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: "*", allow: "/", disallow: ["/admin/", "/api/"] },
     ],
-    sitemap: "https://balilimestone.com/sitemap.xml",
+    sitemap: "https://balilimestone.id/sitemap.xml",
   };
 }

@@ -16,13 +16,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: isId
       ? "Kenali Bali Limestone — supplier material konstruksi dan alat berat terpercaya di Bali dengan pengalaman lebih dari 10 tahun dan lebih dari 1.000 proyek sukses."
       : "Learn about Bali Limestone — Bali's trusted construction material supplier with over 10 years of experience and 1,000+ successful projects across the island.",
-    alternates: { canonical: `https://balilimestone.com/${locale}/about` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/about` },
     openGraph: {
       title: isId ? "Tentang Kami | Bali Limestone" : "About Bali Limestone | Trusted Construction Supplier",
       description: isId
         ? "Lebih dari 10 tahun pengalaman menyediakan material premium dan alat berat di Bali."
         : "Over 10 years of experience supplying premium limestone and construction materials across Bali.",
-      url: `https://balilimestone.com/${locale}/about`,
+      url: `https://balilimestone.id/${locale}/about`,
     },
   };
 }

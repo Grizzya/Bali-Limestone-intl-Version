@@ -18,11 +18,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: name,
     description: `${desc?.slice(0, 155) ?? "Professional construction service by Bali Limestone in Bali, Indonesia."}`,
-    alternates: { canonical: `https://balilimestone.com/${locale}/services/${slug}` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/services/${slug}` },
     openGraph: {
       title: `${name} | Bali Limestone`,
       description: desc ?? "",
-      url: `https://balilimestone.com/${locale}/services/${slug}`,
+      url: `https://balilimestone.id/${locale}/services/${slug}`,
       images: service.gambar ? [{ url: service.gambar, alt: name }] : [],
     },
   };

@@ -19,7 +19,7 @@ export async function generateMetadata({
       ? "Bali Limestone menyediakan layanan Land Cut & Fill, Galian Basement, Land Clearing, dan Bongkar Bangunan di seluruh Bali."
       : "Bali Limestone provides Land Cut & Fill, Basement Excavation, Land Clearing, and Building Demolition services across Bali, Indonesia.",
     alternates: {
-      canonical: `https://balilimestone.com/${locale}/services`,
+      canonical: `https://balilimestone.id/${locale}/services`,
     },
     openGraph: {
       title: isId
@@ -28,7 +28,7 @@ export async function generateMetadata({
       description: isId
         ? "Bali Limestone menyediakan layanan konstruksi profesional untuk proyek skala menengah hingga besar di seluruh Bali."
         : "Professional construction services for medium to large-scale projects across Bali, Indonesia.",
-      url: `https://balilimestone.com/${locale}/services`,
+      url: `https://balilimestone.id/${locale}/services`,
     },
   };
 }

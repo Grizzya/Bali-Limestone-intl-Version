@@ -15,13 +15,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: isId
       ? "Temukan produk material konstruksi premium Bali Limestone — batu limestone, tanah urug, batu pondasi, pasir, dan material pilihan lainnya untuk proyek Anda di Bali."
       : "Browse Bali Limestone's premium construction materials — limestone, fill soil, foundation stones, sand, and more. Quality materials delivered across Bali.",
-    alternates: { canonical: `https://balilimestone.com/${locale}/product` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/product` },
     openGraph: {
       title: isId ? "Katalog Produk | Bali Limestone" : "Construction Materials | Bali Limestone",
       description: isId
         ? "Material konstruksi premium tersedia untuk proyek residensial dan komersial di seluruh Bali."
         : "Premium construction materials for residential and commercial projects across Bali.",
-      url: `https://balilimestone.com/${locale}/product`,
+      url: `https://balilimestone.id/${locale}/product`,
     },
   };
 }

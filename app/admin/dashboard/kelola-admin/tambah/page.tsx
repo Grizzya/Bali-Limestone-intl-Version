@@ -37,7 +37,7 @@ export default async function TambahAdminPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input type="email" name="email" required placeholder="admin@balilimestone.com" className="w-full border px-4 py-3 rounded-lg outline-none" />
+            <input type="email" name="email" required placeholder="admin@balilimestone.id" className="w-full border px-4 py-3 rounded-lg outline-none" />
           </div>
 
           <div>

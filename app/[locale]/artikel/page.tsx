@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: isId
       ? "Tips konstruksi, inspirasi desain, dan berita terbaru dari Bali Limestone – supplier material bangunan terpercaya di Bali."
       : "Construction tips, design inspiration, and the latest news from Bali Limestone – Bali's trusted construction material supplier.",
-    alternates: { canonical: `https://balilimestone.com/${locale}/artikel` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/artikel` },
     openGraph: {
       title: isId ? "Blog & Inspirasi | Bali Limestone" : "Blog & Inspiration | Bali Limestone",
-      url: `https://balilimestone.com/${locale}/artikel`,
+      url: `https://balilimestone.id/${locale}/artikel`,
     },
   };
 }

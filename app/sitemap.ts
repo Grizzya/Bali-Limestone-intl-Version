@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://balilimestone.com";
+  const base = "https://balilimestone.id";
   const locales = ["en", "id"];
   const routes = ["/", "/about", "/services", "/product", "/artikel"];
 

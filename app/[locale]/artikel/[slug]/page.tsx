@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: judul,
     description: konten?.slice(0, 155) ?? "Read this article from Bali Limestone.",
-    alternates: { canonical: `https://balilimestone.com/${locale}/artikel/${slug}` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/artikel/${slug}` },
     openGraph: {
       title: judul,
       description: konten?.slice(0, 155) ?? "",
-      url: `https://balilimestone.com/${locale}/artikel/${slug}`,
+      url: `https://balilimestone.id/${locale}/artikel/${slug}`,
       type: "article",
       publishedTime: artikel.createdAt.toISOString(),
       images: artikel.gambar ? [{ url: artikel.gambar, alt: judul }] : [],
@@ -59,7 +59,7 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
     headline: judulAktif,
     datePublished: artikel.createdAt.toISOString(),
     image: artikel.gambar || undefined,
-    publisher: { "@type": "Organization", name: "Bali Limestone", url: "https://balilimestone.com" },
+    publisher: { "@type": "Organization", name: "Bali Limestone", url: "https://balilimestone.id" },
   };
 
   return (
