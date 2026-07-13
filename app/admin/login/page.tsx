@@ -37,7 +37,6 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         (await cookies()).set('admin_session', admin.id, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
-          maxAge: 60 * 60 * 24, 
           sameSite: 'strict',
           path: '/',
         });

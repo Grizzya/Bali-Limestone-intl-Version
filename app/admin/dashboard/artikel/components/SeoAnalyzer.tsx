@@ -5,15 +5,10 @@ import React, { useEffect, useState } from 'react';
 interface SeoAnalyzerProps {
   judul: string;
   konten: string;
-  /** Nama field untuk hidden input, misal "focusKeywordId" / "focusKeywordEn" */
   keywordFieldName: string;
-  /** Label kecil di header, misal "Indonesia" / "English" */
   label?: string;
-  /** Nilai awal (untuk mode edit artikel) */
   defaultKeyword?: string;
-  /** Opsional: kirim keyword ke parent kalau parent butuh (misal untuk badge status) */
   onKeywordChange?: (keyword: string) => void;
-  /** Opsional: kirim skor ke parent (misal untuk badge status di list artikel) */
   onScoreChange?: (score: number) => void;
 }
 

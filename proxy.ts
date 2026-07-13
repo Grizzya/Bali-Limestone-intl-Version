@@ -1,15 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing'; // Pastikan merujuk ke file routing.ts milikmu
 
-// Inisialisasi fungsi pengatur bahasa dari next-intl
-const intlMiddleware = createMiddleware({
-  locales: ['en', 'id'],
-  defaultLocale: 'en',
-  localePrefix: 'as-needed' 
-});
+// Inisialisasi fungsi pengatur bahasa menggunakan konfigurasi routing terpusat
+const intlMiddleware = createMiddleware(routing);
 
-// 🔹 PERBAIKAN UTAMA: Menggunakan 'export default function proxy' agar dibaca sempurna oleh Next 16
 export default function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
@@ -36,11 +32,14 @@ export default function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Target Satpam Admin Tuan
+   
     '/admin/dashboard/:path*', 
     '/admin/login',
     
-    // Target next-intl untuk menyaring bahasa
+    '/',                 
+    '/(id|en)/:path*',    
+    
+   
     '/((?!api|_next|_vercel|.*\\..*).*)'
   ],
 };
