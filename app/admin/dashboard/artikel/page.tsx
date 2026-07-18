@@ -86,7 +86,7 @@ export default async function ArtikelPageAdmin({
         data: { slug, judul, judulId, konten, kontenId, gambar: imageUrl, focusKeywordEn, focusKeywordId },
       });
     } catch (err: any) {
-      // Kalau tetap race condition (dua request nyaris bersamaan), jangan crash
+     
       if (err.code === 'P2002') {
         console.warn('Slug bentrok saat create, kemungkinan double-submit. Diabaikan.');
         return;

@@ -7,7 +7,7 @@ import Review from "@/components/sections/Review";
 import Location from "@/components/sections/Location";
 import Footer from "@/components/layout/Footer";
 import { prisma } from "@/lib/prisma";
-
+import ArticleSection from "@/components/sections/ArticleSection";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -19,7 +19,6 @@ export const metadata = {
 };
 
 export const revalidate = 0; 
-
 
 export default async function Home({ params }: { params: Promise<{ locale?: string }> }) {
   // Ambil locale yang sedang aktif (jika di domain utama, default ke 'en')
@@ -34,13 +33,27 @@ export default async function Home({ params }: { params: Promise<{ locale?: stri
     orderBy: { id: "desc" },
   });
 
-  
   const rawServices = await prisma.jasa.findMany({
     take: 4, 
     orderBy: { id: "asc" },
   });
 
-  
+  // 2. Tarik Data Artikel Terbaru
+  const latestArticles = await prisma.artikel.findMany({
+    take: 5,
+    orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      slug: true,
+      judul: true,
+      judulId: true,
+      konten: true,
+      kontenId: true,
+      gambar: true,
+      createdAt: true,
+    },
+  });
+
   const dbServices = rawServices.map((jasa: any) => ({
     title: locale === "id" ? (jasa.namaId || jasa.nama) : jasa.nama,
     description: locale === "id" ? (jasa.deskripsiId || jasa.deskripsi) : jasa.deskripsi,
@@ -67,8 +80,15 @@ export default async function Home({ params }: { params: Promise<{ locale?: stri
         <Services services={dbServices} />
         <ProductSection products={dbProducts} />
         
+        {/* Tambahan ArticleSection sesuai permintaan */}
+       
+        
         <Review /> 
+        
+          <ArticleSection articles={latestArticles} />
+
         <Location />
+         
         <Footer />
       </main>
     </NextIntlClientProvider>

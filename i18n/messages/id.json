@@ -139,7 +139,14 @@
     "HomeProduct": {
       "title": "Produk Kami",
       "viewAll": "Lihat Semua"
-    }
+    },
+
+    "HomeArticle": {
+  "eyebrow": "Berita Terbaru",
+  "title": "Artikel & Wawasan",
+  "readMore": "Baca Selengkapnya",
+  "viewAll": "Lihat Semua Artikel"
+}
 
 
 

@@ -1,19 +1,16 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+// @ts-ignore - 
+import { Paper, SEOAssessor } from 'yoastseo';
 
 interface SeoAnalyzerProps {
   judul: string;
   konten: string;
-  /** Nama field untuk hidden input, misal "focusKeywordId" / "focusKeywordEn" */
   keywordFieldName: string;
-  /** Label kecil di header, misal "Indonesia" / "English" */
   label?: string;
-  /** Nilai awal (untuk mode edit artikel) */
   defaultKeyword?: string;
-  /** Opsional: kirim keyword ke parent kalau parent butuh (misal untuk badge status) */
   onKeywordChange?: (keyword: string) => void;
-  /** Opsional: kirim skor ke parent (misal untuk badge status di list artikel) */
   onScoreChange?: (score: number) => void;
 }
 
@@ -31,9 +28,6 @@ export default function SeoAnalyzer({
   const [checklist, setChecklist] = useState<{ text: string; passed: boolean }[]>([]);
 
   useEffect(() => {
-    let currentScore = 0;
-    const checks: { text: string; passed: boolean }[] = [];
-
     if (!keyword.trim()) {
       setScore(0);
       onScoreChange?.(0);
@@ -41,59 +35,48 @@ export default function SeoAnalyzer({
       return;
     }
 
-    const kw = keyword.toLowerCase().trim();
-    const jdl = judul.toLowerCase();
-    const ktn = konten.toLowerCase();
-
-    const kwInTitle = jdl.includes(kw);
-    checks.push({
-      text: kwInTitle ? 'Focus keyword ditemukan di judul.' : 'Focus keyword TIDAK ditemukan di judul.',
-      passed: kwInTitle,
+    
+    const paper = new Paper(konten, {
+      keyword: keyword,
+      title: judul,
+      titleWidth: judul.length * 8, 
+      description: '', 
+      locale: label === 'Indonesia' ? 'id_ID' : 'en_US', 
     });
-    if (kwInTitle) currentScore += 25;
 
-    const awalKonten = ktn.substring(0, Math.floor(ktn.length * 0.15));
-    const kwInEarlyContent = awalKonten.includes(kw);
-    checks.push({
-      text: kwInEarlyContent ? 'Focus keyword muncul di paragraf pembuka.' : 'Focus keyword tidak ada di paragraf pembuka.',
-      passed: kwInEarlyContent,
+    
+    const assessor = new SEOAssessor();
+    assessor.assess(paper);
+    
+    const results = assessor.getValidResults();
+
+    let totalYoastScore = 0;
+    const newChecklist: { text: string; passed: boolean }[] = [];
+
+    results.forEach((result: any) => {
+      
+      const isPassed = result.score >= 7;
+      totalYoastScore += result.score;
+
+      // Pesan Yoast sering kali mengandung tag HTML (seperti <a> atau <strong>)
+      // Kita bersihkan agar rapi di UI Anda
+      const cleanText = result.text.replace(/<[^>]+>/g, '');
+
+      newChecklist.push({
+        text: cleanText,
+        passed: isPassed,
+      });
     });
-    if (kwInEarlyContent) currentScore += 20;
 
-    const jumlahKata = konten
-      .replace(/<[^>]+>/g, ' ')
-      .trim()
-      .split(/\s+/)
-      .filter(Boolean).length;
-    const wordCountPassed = jumlahKata >= 300;
-    checks.push({
-      text: `Panjang konten: ${jumlahKata} kata. ${wordCountPassed ? '(Bagus, minimal 300 kata)' : '(Kurang, usahakan minimal 300 kata)'}`,
-      passed: wordCountPassed,
-    });
-    if (wordCountPassed) currentScore += 25;
+    // 4. Konversi skor Yoast (skala 1-9) ke skor persentase (0-100) untuk UI Anda
+    const maxPossibleScore = results.length * 9;
+    const finalScore = maxPossibleScore > 0 ? Math.round((totalYoastScore / maxPossibleScore) * 100) : 0;
 
-    const escapedKw = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const matches = ktn.match(new RegExp(escapedKw, 'g'));
-    const count = matches ? matches.length : 0;
-    const density = jumlahKata > 0 ? (count / jumlahKata) * 100 : 0;
-    const densityPassed = density >= 0.8 && density <= 2.5;
-    checks.push({
-      text: `Kepadatan kata kunci: ${density.toFixed(2)}% (Ideal: 0.8% - 2.5%)`,
-      passed: densityPassed,
-    });
-    if (densityPassed) currentScore += 15;
+    setScore(finalScore);
+    setChecklist(newChecklist);
+    onScoreChange?.(finalScore);
 
-    const titleLengthPassed = judul.length >= 40 && judul.length <= 60;
-    checks.push({
-      text: `Panjang judul: ${judul.length} karakter (Ideal: 40 - 60 karakter)`,
-      passed: titleLengthPassed,
-    });
-    if (titleLengthPassed) currentScore += 15;
-
-    setScore(currentScore);
-    setChecklist(checks);
-    onScoreChange?.(currentScore);
-  }, [keyword, judul, konten]);
+  }, [keyword, judul, konten, label, onScoreChange]);
 
   const dapatkanWarnaSkor = () => {
     if (score >= 80) return 'bg-green-500';
@@ -126,7 +109,6 @@ export default function SeoAnalyzer({
           placeholder="Contoh: batu alam bali, bali limestone"
           className="w-full border border-gray-300 px-4 py-2.5 rounded-lg text-sm outline-none focus:ring-2 focus:ring-yellow-400 bg-gray-50"
         />
-        {/* Ini yang tadinya hilang: keyword ikut ter-submit ke server action */}
         <input type="hidden" name={keywordFieldName} value={keyword} />
       </div>
 
@@ -136,15 +118,19 @@ export default function SeoAnalyzer({
 
       <div className="space-y-3 pt-2">
         <h4 className="text-xs font-bold uppercase text-gray-400 tracking-wider">Analisis Dasar:</h4>
-        <ul className="space-y-2.5 text-xs text-gray-600">
-          {checklist.map((item, idx) => (
-            <li key={idx} className="flex items-start gap-2.5 leading-relaxed">
-              <span className={`flex-shrink-0 text-sm leading-none ${item.passed ? 'text-green-500' : 'text-red-400'}`}>
-                {item.passed ? '✓' : 'x'}
-              </span>
-              <span className={item.passed ? 'text-gray-700' : 'text-gray-400 italic'}>{item.text}</span>
-            </li>
-          ))}
+        <ul className="space-y-2.5 text-xs text-gray-600 h-64 overflow-y-auto pr-2 scrollbar-thin">
+          {checklist.length > 0 ? (
+            checklist.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2.5 leading-relaxed border-b border-gray-50 pb-2 last:border-0">
+                <span className={`flex-shrink-0 text-sm leading-none ${item.passed ? 'text-green-500' : 'text-red-400'}`}>
+                  {item.passed ? '✓' : 'x'}
+                </span>
+                <span className={item.passed ? 'text-gray-700' : 'text-gray-400 italic'}>{item.text}</span>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-400 italic">Analisis akan muncul di sini...</li>
+          )}
         </ul>
       </div>
     </div>

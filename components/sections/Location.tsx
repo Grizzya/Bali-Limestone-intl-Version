@@ -4,9 +4,12 @@ export default function FindUs() {
   const t = useTranslations("location");
 
   return (
-    <section className="py-12 md:py-20 bg-white" aria-label="Our location">
+    <div className="bg-[#000000]">
+     <section className="py-12 md:py-20 bg-white rounded-t-[50px]" aria-label="Our location">
       <div className="w-full max-w-8xl mx-auto px-4 md:px-8 lg:px-12">
-        <div className="relative rounded-[24px] md:rounded-[40px] w-full h-[250px] md:h-[500px] lg:h-[600px] overflow-hidden shadow-sm">
+        
+        {/* Tinggi dipertahankan di md:h-[421px] sesuai request Anda */}
+        <div className="relative rounded-[24px] md:rounded-[40px] w-full h-[300px] md:h-[421px] overflow-hidden shadow-sm">
 
           <iframe
             src="https://maps.google.com/maps?q=Jl.+Raya+Dalung+No.83,+Badung,+Bali&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -28,7 +31,7 @@ export default function FindUs() {
             aria-hidden="true"
           />
 
-          <div className="absolute top-10 left-6 md:top-20 md:left-16 lg:top-32 lg:left-24 text-white z-20">
+          <div className="absolute top-8 left-6 md:top-14 md:left-16 lg:top-20 lg:left-24 text-white z-20">
             <h2 className="text-3xl md:text-4xl lg:text-[48px] font-semibold mb-3 md:mb-6">
               {t("title")}
             </h2>
@@ -71,5 +74,6 @@ export default function FindUs() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: judul,
     description: konten?.slice(0, 155) ?? "Read this article from Bali Limestone.",
-    alternates: { canonical: `https://balilimestone.id/${locale}/artikel/${slug}` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/articles/${slug}` },
     openGraph: {
       title: judul,
       description: konten?.slice(0, 155) ?? "",
-      url: `https://balilimestone.id/${locale}/artikel/${slug}`,
+      url: `https://balilimestone.id/${locale}/articles/${slug}`,
       type: "article",
       publishedTime: artikel.createdAt.toISOString(),
       images: artikel.gambar ? [{ url: artikel.gambar, alt: judul }] : [],

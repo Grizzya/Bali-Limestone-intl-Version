@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: isId
       ? "Tips konstruksi, inspirasi desain, dan berita terbaru dari Bali Limestone – supplier material bangunan terpercaya di Bali."
       : "Construction tips, design inspiration, and the latest news from Bali Limestone – Bali's trusted construction material supplier.",
-    alternates: { canonical: `https://balilimestone.id/${locale}/artikel` },
+    alternates: { canonical: `https://balilimestone.id/${locale}/articles` },
     openGraph: {
       title: isId ? "Blog & Inspirasi | Bali Limestone" : "Blog & Inspiration | Bali Limestone",
-      url: `https://balilimestone.id/${locale}/artikel`,
+      url: `https://balilimestone.id/${locale}/articles`,
     },
   };
 }
@@ -120,7 +120,7 @@ export default async function ArtikelUserPage({
 
         {/* HERO ARTICLE */}
         {currentPage === 1 && (
-          <Link href={`/${locale}/artikel/${artikelUtama.slug}`} className="group block relative rounded-xl overflow-hidden shadow-lg border">
+          <Link href={`/${locale}/articles/${artikelUtama.slug}`} className="group block relative rounded-xl overflow-hidden shadow-lg border">
             <div className="relative h-[550px] w-full bg-gray-900">
               {artikelUtama.gambar && (
                 <img src={artikelUtama.gambar} alt={getJudul(artikelUtama)}
@@ -148,7 +148,7 @@ export default async function ArtikelUserPage({
 
           <div className={`${currentPage === 1 ? "lg:col-span-2" : "lg:col-span-3"} space-y-6 divide-y divide-gray-100`}>
             {(currentPage === 1 ? artikelListKiri : semuaArtikel).map((item, idx) => (
-              <Link key={item.id} href={`/${locale}/artikel/${item.slug}`}
+              <Link key={item.id} href={`/${locale}/articles/${item.slug}`}
                 className={`group flex flex-col-reverse md:flex-row gap-8 rounded-xl p-4 transition-all duration-300 hover:bg-gray-50 border border-transparent hover:border-gray-100 hover:shadow-sm ${idx > 0 ? "mt-6 pt-6" : ""}`}
               >
                 <div className="flex-1 space-y-3 flex flex-col justify-between">
@@ -178,7 +178,7 @@ export default async function ArtikelUserPage({
           {currentPage === 1 && (
             <aside className="space-y-6" aria-label="Top News">
               {artikelTopNewsKanan.map((item) => (
-                <Link key={item.id} href={`/${locale}/artikel/${item.slug}`}
+                <Link key={item.id} href={`/${locale}/articles/${item.slug}`}
                   className="group block space-y-4 rounded-xl p-4 transition-all duration-300 hover:bg-gray-50 border border-transparent hover:border-gray-100 hover:shadow-sm">
                   <div className="w-full h-56 bg-gray-100 rounded-xl overflow-hidden border shadow-sm">
                     {item.gambar && (

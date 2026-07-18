@@ -124,7 +124,15 @@
             "HomeProduct": {
           "title": "Our Products",
           "viewAll": "View All"
-        }
+        },
+
+
+        "HomeArticle": {
+  "eyebrow": "Latest News",
+  "title": "Articles & Insights",
+  "readMore": "Read More",
+  "viewAll": "View All Articles"
+}
 
 
 
