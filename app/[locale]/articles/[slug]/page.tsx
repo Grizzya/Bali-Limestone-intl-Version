@@ -131,7 +131,7 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
 
                 <div className="h-px bg-black/15" />
 
-                <a href="https://wa.me/628181802020" target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/6282322884855" target="_blank" rel="noopener noreferrer"
                   aria-label="Contact Bali Limestone via WhatsApp"
                   className="bg-[#1a1a1a] hover:bg-black text-[#ffffff] rounded-xl px-5 py-3.5 flex items-center justify-between transition-colors duration-200">
                   <div className="flex items-center gap-3">

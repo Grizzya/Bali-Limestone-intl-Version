@@ -74,10 +74,10 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="tel:+628181802020"
+                  href="tel:+6282322884855"
                   className="text-gray-400 hover:text-white transition-colors text-[15px] md:text-[16px] font-light"
                 >
-                  +62 818-1802-020
+                  +62 82322884855
                 </a>
               </address>
             </div>
@@ -102,7 +102,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://wa.me/628181802020"
+              href="https://wa.me/6282322884855"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Bali Limestone on WhatsApp"

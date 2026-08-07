@@ -52,7 +52,7 @@ export default function ProductModal({
     productName: displayTitle,
   });
 
-  const linkWaDinamis = `https://wa.me/6282144358100?text=${encodeURIComponent(
+  const linkWaDinamis = `https://wa.me/6282322884855?text=${encodeURIComponent(
     pesanTemplate
   )}`;
 

@@ -128,7 +128,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
                 {/* ✅ FIX: tag <a ditambahkan kembali */}
                 <a
-                  href="https://wa.me/628181802020"
+                  href="https://wa.me/6282322884855"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Contact Bali Limestone via WhatsApp"

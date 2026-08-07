@@ -61,7 +61,7 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
 
         {/* Desktop WhatsApp */}
         <a
-          href="https://wa.me/628181802020"
+          href="https://wa.me/6282322884855"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contact Bali Limestone via WhatsApp"
@@ -121,7 +121,7 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
             ))}
 
             <a
-              href="https://wa.me/628181802020"
+              href="https://wa.me/6282322884855"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
