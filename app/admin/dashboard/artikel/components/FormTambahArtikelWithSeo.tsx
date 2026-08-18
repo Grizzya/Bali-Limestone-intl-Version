@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import InputGambarArtikel from './InputGambarArtikel';
 import SeoAnalyzerTabs from './SeoAnalyzerTabs';
 import RichTextEditor from './RichTextEditor';
+import SubmitButton from './SubmitButton';
 
 interface FormProps {
   serverAction: (formData: FormData) => Promise<void>;
@@ -71,12 +72,7 @@ export default function FormTambahArtikelWithSeo({ serverAction }: FormProps) {
               <InputGambarArtikel />
             </div>
             <div>
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-all shadow-md text-sm"
-              >
-                Publish Artikel
-              </button>
+              <SubmitButton label="Publish Artikel" confirmMessage="Apakah Anda yakin ingin mempublikasikan artikel ini?" />
             </div>
           </div>
         </form>

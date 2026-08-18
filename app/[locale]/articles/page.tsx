@@ -28,19 +28,32 @@ export default async function ArtikelUserPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; q?: string }>;
 }) {
   const locale = (await params).locale;
   const resolvedSearchParams = await searchParams;
 
+  const searchQuery = resolvedSearchParams.q || "";
   const currentPage = Number(resolvedSearchParams.page) || 1;
   
   // Mengubah jumlah item menjadi 5 agar lebih ringan dan grid halaman 1 simetris (1 hero + 4 sisa)
   const itemsPerPage = 5;
   const skip = (currentPage - 1) * itemsPerPage;
 
+  const whereCondition: Prisma.ArtikelWhereInput = searchQuery
+    ? {
+        OR: [
+          { judul: { contains: searchQuery } },
+          { judulId: { contains: searchQuery } },
+          { konten: { contains: searchQuery } },
+          { kontenId: { contains: searchQuery } },
+        ],
+      }
+    : {};
+
   // Mengambil data secara sekuensial untuk menghemat pool koneksi TiDB serverless
   const semuaArtikel = await prisma.artikel.findMany({
+    where: whereCondition,
     skip,
     take: itemsPerPage,
     orderBy: { createdAt: "desc" },
@@ -56,16 +69,25 @@ export default async function ArtikelUserPage({
     },
   });
 
-  const totalItems = await prisma.artikel.count();
+  const totalItems = await prisma.artikel.count({ where: whereCondition });
   const totalPages = Math.max(1, Math.ceil(totalItems / itemsPerPage));
 
   if (semuaArtikel.length === 0) {
     return (
-      <>
+      <div className="min-h-screen bg-white text-black flex flex-col justify-between font-sans">
         <Navbar variant="dark" />
-        <main className="py-20 text-center text-gray-500">No articles published yet.</main>
+        <main className="py-20 text-center text-gray-500 flex-grow">
+          <p>{searchQuery ? `No articles found for "${searchQuery}".` : "No articles published yet."}</p>
+          {searchQuery && (
+            <div className="mt-4">
+              <Link href={`/${locale}/articles`} className="text-yellow-500 hover:text-yellow-600 font-medium underline">
+                &larr; Back to all articles
+              </Link>
+            </div>
+          )}
+        </main>
         <Footer />
-      </>
+      </div>
     );
   }
 
@@ -112,10 +134,10 @@ export default async function ArtikelUserPage({
           <span className="text-sm font-bold text-gray-800 border-b-2 border-black pb-2">
             Latest Articles {currentPage > 1 && `– Page ${currentPage}`}
           </span>
-          <div className="hidden md:flex items-center gap-1">
-            <input type="text" placeholder="Search articles..." className="border border-gray-200 text-xs px-3 py-1.5 rounded outline-none w-48 bg-gray-50" />
-            <button className="bg-yellow-400 text-black text-xs font-semibold px-3 py-1.5 rounded hover:bg-yellow-500 transition-colors">Search</button>
-          </div>
+          <form method="GET" action={`/${locale}/articles`} className="hidden md:flex items-center gap-1">
+            <input type="text" name="q" defaultValue={searchQuery} placeholder="Search articles..." className="border border-gray-200 text-xs px-3 py-1.5 rounded outline-none w-48 bg-gray-50" />
+            <button type="submit" className="bg-yellow-400 text-black text-xs font-semibold px-3 py-1.5 rounded hover:bg-yellow-500 transition-colors">Search</button>
+          </form>
         </div>
 
         {/* HERO ARTICLE */}
@@ -208,20 +230,20 @@ export default async function ArtikelUserPage({
           </p>
           <div className="flex gap-2">
             {currentPage > 1 ? (
-              <Link href={`?page=${currentPage - 1}`} className="px-4 py-2 text-xs font-bold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm">
+              <Link href={`?page=${currentPage - 1}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ""}`} className="px-4 py-2 text-xs font-bold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm">
                 &larr; Previous
               </Link>
             ) : (
               <button disabled className="px-4 py-2 text-xs font-bold text-gray-300 bg-gray-50 border border-gray-200 rounded-lg cursor-not-allowed">&larr; Previous</button>
             )}
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <Link key={page} href={`?page=${page}`} aria-current={currentPage === page ? "page" : undefined}
+              <Link key={page} href={`?page=${page}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ""}`} aria-current={currentPage === page ? "page" : undefined}
                 className={`px-3.5 py-2 text-xs font-bold rounded-lg border transition-all ${currentPage === page ? "bg-yellow-400 text-black border-yellow-400 shadow-sm" : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"}`}>
                 {page}
               </Link>
             ))}
             {currentPage < totalPages ? (
-              <Link href={`?page=${currentPage + 1}`} className="px-4 py-2 text-xs font-bold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm">
+              <Link href={`?page=${currentPage + 1}${searchQuery ? `&q=${encodeURIComponent(searchQuery)}` : ""}`} className="px-4 py-2 text-xs font-bold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all shadow-sm">
                 Next &rarr;
               </Link>
             ) : (

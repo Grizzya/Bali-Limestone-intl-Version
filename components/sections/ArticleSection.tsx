@@ -58,7 +58,7 @@ export default function ArticleSection({ articles }: { articles: Article[] }) {
       {/* GRID ARTIKEL */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-        {articles.map((article) => (
+        {articles.slice(0, 3).map((article) => (
           <Link
             key={article.id}
             href={`/articles/${article.slug}`}
