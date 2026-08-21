@@ -23,13 +23,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!artikel) return {};
   const judul = locale === "id" ? (artikel.judulId || artikel.judul) : artikel.judul;
   const konten = locale === "id" ? (artikel.kontenId || artikel.konten) : artikel.konten;
+  
+  // SEO Optimation: Bersihkan tag HTML dan siapkan keyword
+  const cleanDescription = konten?.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim().slice(0, 155) ?? "Read this article from Bali Limestone.";
+  const focusKeyword = locale === "id" ? artikel.focusKeywordId : artikel.focusKeywordEn;
+  const keywordsList = focusKeyword ? focusKeyword.split(',').map(k => k.trim()) : undefined;
+
   return {
     title: judul,
-    description: konten?.slice(0, 155) ?? "Read this article from Bali Limestone.",
+    description: cleanDescription,
+    keywords: keywordsList,
     alternates: { canonical: `https://balilimestone.id/${locale}/articles/${slug}` },
     openGraph: {
       title: judul,
-      description: konten?.slice(0, 155) ?? "",
+      description: cleanDescription,
       url: `https://balilimestone.id/${locale}/articles/${slug}`,
       type: "article",
       publishedTime: artikel.createdAt.toISOString(),
@@ -52,11 +59,16 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
     { day: "numeric", month: "long", year: "numeric" }
   );
 
+  const cleanDescription = kontenAktif?.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim().slice(0, 155) ?? "Read this article from Bali Limestone.";
+  const focusKeyword = locale === "id" ? artikel.focusKeywordId : artikel.focusKeywordEn;
+
   // JSON-LD Article schema
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: judulAktif,
+    description: cleanDescription,
+    keywords: focusKeyword || undefined,
     datePublished: artikel.createdAt.toISOString(),
     image: artikel.gambar || undefined,
     publisher: { "@type": "Organization", name: "Bali Limestone", url: "https://balilimestone.id" },

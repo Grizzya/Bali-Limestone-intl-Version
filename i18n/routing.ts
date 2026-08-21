@@ -7,5 +7,5 @@ export const routing = defineRouting({
   localePrefix: 'as-needed' 
 });
 
-// Mengekspor Link, redirect, dll agar bisa dipakai di Navbar
+
 export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);
