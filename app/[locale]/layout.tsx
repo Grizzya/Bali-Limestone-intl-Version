@@ -14,9 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: t("keywords").split(", "),
     metadataBase: new URL("https://balilimestone.id"),
     icons: {
-      icon: "/icon.png",
-      shortcut: "/icon.png",
-      apple: "/icon.png",
+      icon: "/iconw.png",
+      shortcut: "/iconw.png",
+      apple: "/iconw.png",
     },
     alternates: { canonical: "/" },
     openGraph: {

@@ -136,8 +136,8 @@ export default async function ArtikelDetail({ params }: { params: Promise<{ slug
                   </h2>
                   <p className="mt-2 text-sm text-[#3a2e00] leading-relaxed">
                     {locale === "id"
-                     ? "Tim kami siap mendukung proyek Anda — material, alat berat, & pengiriman."
-                     : "Our team is ready to support your project — material, alat berat, & delivery."}
+                     ? "Tim kami siap mendukung proyek Anda material, alat berat, & pengiriman."
+                     : "Our team is ready to support your project material, alat berat, & delivery."}
                   </p>
                 </div>
 
